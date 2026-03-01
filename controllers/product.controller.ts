@@ -43,7 +43,7 @@ export const createProduct = async (req: Request, res: Response): Promise<void> 
           id: category.id,
           name: category.name,
         } : null,
-        createdAt: product.created_at.getTime(), // epoch time milis
+        createdAt: product.created_at.getTime(),
       },
     });
   } catch (error) {
@@ -148,7 +148,7 @@ export const searchProducts = async (req: Request, res: Response): Promise<void>
         }
       ],
       order: [['created_at', 'DESC']],
-      distinct: true, // Prevents count issues when using includes
+      distinct: true,
     });
 
     const totalPages = Math.ceil(count / limit);

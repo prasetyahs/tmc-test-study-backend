@@ -13,7 +13,7 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   host: dbHost,
   port: dbPort,
   dialect: 'postgres',
-  logging: false, // Set to console.log if you want to see SQL queries
+  logging: false,
 });
 
 export default sequelize;

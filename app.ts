@@ -27,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// Protect these API endpoints with the API_KEY check
+
+
 app.use('/api/categories', requireApiKey, categoriesRouter);
 app.use('/api/products', requireApiKey, productsRouter);
 app.use('/api/search', requireApiKey, searchRouter);

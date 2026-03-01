@@ -53,7 +53,8 @@ Product.init({
   updatedAt: 'updated_at',
 });
 
-// Setup relationships
+
+
 Product.belongsTo(Category, { foreignKey: 'categoryId', as: 'category' });
 Category.hasMany(Product, { foreignKey: 'categoryId', as: 'products' });
 
