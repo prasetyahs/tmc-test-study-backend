@@ -9,6 +9,7 @@ import categoriesRouter from './routes/categories';
 import productsRouter from './routes/products';
 import searchRouter from './routes/search';
 import sequelize from './config/database';
+import { requireApiKey } from './middlewares/auth.middleware';
 
 const app = express();
 
@@ -25,8 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api/categories', categoriesRouter);
-app.use('/api/products', productsRouter);
-app.use('/api/search', searchRouter);
+
+// Protect these API endpoints with the API_KEY check
+app.use('/api/categories', requireApiKey, categoriesRouter);
+app.use('/api/products', requireApiKey, productsRouter);
+app.use('/api/search', requireApiKey, searchRouter);
 
 export default app;
